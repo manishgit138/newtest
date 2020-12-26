@@ -4,7 +4,7 @@ services:
 
 script:
   - sudo apt install postgresql postgresql-contrib -y
-  - systemctl enable postgresql
+  - sudo systemctl enable postgresql
   - sudo -u postgres createuser concourse
   - sudo -u postgres createdb --owner=concourse atc
   #- wget https://concourse-ci.org/docker-compose.yml
@@ -17,6 +17,12 @@ script:
   - ssh-keygen -t rsa -q -N '' -f /etc/concourse/session_signing_key
   - sudo cp /etc/concourse/worker_key.pub /etc/concourse/authorized_worker_keys
   - EXT_IP=$(curl -s https://ip.ruan.dev)
+  - sudo cp web_environment /etc/concourse/
+  - sudo cp worker_environment /etc/concourse/
+  - sudo mkdir /var/lib/concourse
+  - sudo adduser --system --group concourse
+  - sudo chown -R concourse:concourse /etc/concourse /var/lib/concourse
+  - sudo chmod 600 /etc/concourse/*_environment
   - echo $EXT_IP
   - ls
   - cd concourse
