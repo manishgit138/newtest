@@ -4,5 +4,6 @@ script:
   - tar -xzf concourse-6.7.2-linux-amd64.tgz
   - ls
   - cd concourse
+  - cd fly-assets
   - ls
   - tar -xzf fly-linux-amd64.tgz
