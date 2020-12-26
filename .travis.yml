@@ -7,3 +7,5 @@ script:
   - cd fly-assets
   - ls
   - tar -xzf fly-linux-amd64.tgz
+  - cp fly /usr/local/bin/
+  - fly
