@@ -36,4 +36,4 @@ script:
   - git clone https://github.com/manishgit138/maven-resource
   - cd maven-resource
   #- fly -t tutorial set-pipeline --help
-  - fly -y -t tutorial set-pipeline -n -p build -c mypipline.yml -l cred.yml
+  - fly -t tutorial set-pipeline -n -p build -c mypipline.yml -l cred.yml
