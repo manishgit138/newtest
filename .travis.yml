@@ -32,7 +32,7 @@ script:
   - ls
   - tar -xzf fly-linux-amd64.tgz
   - sudo cp fly /usr/local/bin/
-  - fly -t tutorial login -c http://localhost -u test -p test
+  - fly -t tutorial login -c http://localhost:8080 -u test -p test
   #- fly -t tutorial login -c http://127.0.0.1:8080 -u test -p test
   - git clone https://github.com/manishgit138/maven-resource
   - cd maven-resource
