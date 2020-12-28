@@ -36,5 +36,6 @@ script:
   #- fly -t tutorial login -c http://127.0.0.1:8080 -u test -p test
   - git clone https://github.com/manishgit138/maven-resource
   - cd maven-resource
-  #- fly -t tutorial set-pipeline --help
-  - fly -t tutorial set-pipeline -n -p build -c mypipline.yml -l cred.yml
+  #- fly -t tutorial set-pipeline --help 
+  #- fly -t tutorial set-pipeline -n -p build -c mypipline.yml -l cred.yml -o image=. -p docker load -i image.tar
+  - fly -t tutorial set-pipeline -n -p build -c pipline.yml -l cred.yml
