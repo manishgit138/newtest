@@ -1,3 +1,7 @@
-image-repo-name: maven
+git-uri: https://github.com/manishgit138/maven-resource
+git-branch: master
+git_key.private_key: 
+docker-repository-rc: maven
+docker-repository-final: maven2
 registry-username: abhisheknishant
 registry-password: abhishek138
