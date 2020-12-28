@@ -32,3 +32,6 @@ script:
   - tar -xzf fly-linux-amd64.tgz
   - sudo cp fly /usr/local/bin/
   - fly -t ci login -c http://127.0.0.1:8080 -u test -p test
+  - git clone https://github.com/nulldriver/maven-resource
+  - cd maven-resource
+  - fly -t tutorial set-pipeline -p build -c pipeline.yml
