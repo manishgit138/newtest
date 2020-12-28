@@ -9,6 +9,7 @@ script:
   #- sudo -u postgres createuser concourse
   #- sudo -u postgres createdb --owner=concourse atc
   - wget https://concourse-ci.org/docker-compose.yml
+  - cat docker-compose.yml
   - docker-compose up -d
   - wget https://github.com/concourse/concourse/releases/download/v6.7.2/concourse-6.7.2-linux-amd64.tgz
   - tar -xzf concourse-6.7.2-linux-amd64.tgz
