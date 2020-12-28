@@ -4,31 +4,31 @@ services:
     - postgresql
 
 script:
-  - sudo apt install postgresql postgresql-contrib -y
-  - sudo systemctl enable postgresql
-  - sudo -u postgres createuser concourse
-  - sudo -u postgres createdb --owner=concourse atc
-  #- wget https://concourse-ci.org/docker-compose.yml
-  #- docker-compose up -d
+  #- sudo apt install postgresql postgresql-contrib -y
+  #- sudo systemctl enable postgresql
+  #- sudo -u postgres createuser concourse
+  #- sudo -u postgres createdb --owner=concourse atc
+  - wget https://concourse-ci.org/docker-compose.yml
+  - docker-compose up -d
   - wget https://github.com/concourse/concourse/releases/download/v6.7.2/concourse-6.7.2-linux-amd64.tgz
   - tar -xzf concourse-6.7.2-linux-amd64.tgz -C /usr/local/bin
-  - sudo mkdir /etc/concourse
-  - ssh-keygen -t rsa -q -N '' -f /etc/concourse/tsa_host_key
-  - ssh-keygen -t rsa -q -N '' -f /etc/concourse/worker_key
-  - ssh-keygen -t rsa -q -N '' -f /etc/concourse/session_signing_key
-  - sudo cp /etc/concourse/worker_key.pub /etc/concourse/authorized_worker_keys
-  - EXT_IP=$(curl -s https://ip.ruan.dev)
-  - sudo cp web_environment /etc/concourse/
-  - sudo cp worker_environment /etc/concourse/
-  - sudo mkdir /var/lib/concourse
-  - sudo adduser --system --group concourse
-  - sudo chown -R concourse:concourse /etc/concourse /var/lib/concourse
-  - sudo chmod 600 /etc/concourse/*_environment
-  - echo $EXT_IP
-  - ls
+  #- sudo mkdir /etc/concourse
+  #- ssh-keygen -t rsa -q -N '' -f /etc/concourse/tsa_host_key
+  #- ssh-keygen -t rsa -q -N '' -f /etc/concourse/worker_key
+  #- ssh-keygen -t rsa -q -N '' -f /etc/concourse/session_signing_key
+  #- sudo cp /etc/concourse/worker_key.pub /etc/concourse/authorized_worker_keys
+  #- EXT_IP=$(curl -s https://ip.ruan.dev)
+  #- sudo cp web_environment /etc/concourse/
+  #- sudo cp worker_environment /etc/concourse/
+  #- sudo mkdir /var/lib/concourse
+  #- sudo adduser --system --group concourse
+  #- sudo chown -R concourse:concourse /etc/concourse /var/lib/concourse
+  #- sudo chmod 600 /etc/concourse/*_environment
+  #- echo $EXT_IP
+  #- ls
   - cd concourse
   - cd fly-assets
   - ls
   - tar -xzf fly-linux-amd64.tgz
   - sudo cp fly /usr/local/bin/
-  - fly
+  - fly -t ci login -c http://127.0.0.1:8080 -u test -p test
