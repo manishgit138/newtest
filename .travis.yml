@@ -38,4 +38,4 @@ script:
   - cd maven-resource
   #- fly -t tutorial set-pipeline --help 
   #- fly -t tutorial set-pipeline -n -p build -c mypipline.yml -l cred.yml -o image=. -p docker load -i image.tar
-  - fly -t tutorial set-pipeline -n -p build -c pipline.yml -l cred.yml
+  - fly -t tutorial set-pipeline -n -p build -c pipeline.yml -l cred.yml
